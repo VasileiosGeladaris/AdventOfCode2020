@@ -3,18 +3,18 @@ with open('input') as file:
     lines = [line[:len(line)-1] for line in lines]
 
 # PART 1:
-def readBPass(less, more, arr, path):
+def read_bpass(less, more, arr, path):
     if len(arr) == 1:
         return arr[0]
     letter = path[0]
     if letter == less:
-        return readBPass(less, more, arr[:int(len(arr)/2)], path[1:])
+        return read_bpass(less, more, arr[:int(len(arr)/2)], path[1:])
     elif letter == more:
-        return readBPass(less, more, arr[int(len(arr)/2):], path[1:])
+        return read_bpass(less, more, arr[int(len(arr)/2):], path[1:])
 
 max = -1
 for line in lines:
-    id = readBPass('F', 'B', range(128), line[:7]) * 8 + readBPass('L', 'R', range(8), line[7:])
+    id = read_bpass('F', 'B', range(128), line[:7]) * 8 + read_bpass('L', 'R', range(8), line[7:])
     if id > max:
         max = id
 
@@ -37,5 +37,5 @@ row = min(missing_rows, key = missing_rows.count)
 passp = missing[missing_rows.index(row)]
 
 # Print the seat's ID.
-id = readBPass('F', 'B', range(128), passp[:7]) * 8 + readBPass('L', 'R', range(8), passp[7:])
+id = read_bpass('F', 'B', range(128), passp[:7]) * 8 + read_bpass('L', 'R', range(8), passp[7:])
 print(id)

@@ -15,7 +15,7 @@ for line in lines:
 print(count1)
 
 # PART 2:
-def checkSlope(right, down):
+def check_slope(right, down):
     count = 0
     pos = 0
     i = 0
@@ -27,10 +27,10 @@ def checkSlope(right, down):
     return count
 
 results = []
-results.append(checkSlope(1, 1))
-results.append(checkSlope(3, 1))
-results.append(checkSlope(5, 1))
-results.append(checkSlope(7, 1))
-results.append(checkSlope(1, 2))
+results.append(check_slope(1, 1))
+results.append(check_slope(3, 1))
+results.append(check_slope(5, 1))
+results.append(check_slope(7, 1))
+results.append(check_slope(1, 2))
 
 print(f'{results[0]} * {results[1]} * {results[2]} * {results[3]} * {results[4]} = {math.prod(results)}')

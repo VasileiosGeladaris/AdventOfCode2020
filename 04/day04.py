@@ -20,49 +20,49 @@ for line in lines:
 print(counter)
 
 # PART: 2
-def checkByr(number):
+def check_byr(number):
     return (1920 <= int(number) <= 2002)
 
-def checkIyr(number):
+def check_iyr(number):
     return (2010 <= int(number) <= 2020)
 
-def checkEyr(number):
+def check_eyr(number):
     return (2020 <= int(number) <= 2030)
 
-def checkHgt(number):
+def check_hgt(number):
     if len(number) == 5 and number.endswith("cm") and (150 <= int(number[:3]) <= 193):
         return True
     if len(number) == 4 and number.endswith("in") and (59 <= int(number[:2]) <= 76):
         return True
     return False
 
-def checkHcl(color):
+def check_hcl(color):
     if len(color) == 7 and color[0] == '#' and bool(re.match("^[a-f0-9]*$", color[1:])):
         return True
     return False
 
-def checkEcl(color):
+def check_ecl(color):
     if color in ['amb', 'blu', 'brn', 'gry', 'grn', 'hzl', 'oth']:
         return True
     return False
 
-def checkPid(pid):
+def check_pid(pid):
     if len(pid) == 9 and 0 <= int(pid) <= 999999999:
         return True
     return False
 
-def checkCid(cid):
+def check_cid(cid):
     return True
 
 check = {
-    "byr": checkByr,
-    "iyr": checkIyr,
-    "eyr": checkEyr,
-    "hgt": checkHgt,
-    "hcl": checkHcl,
-    "ecl": checkEcl,
-    "pid": checkPid,
-    "cid": checkCid
+    "byr": check_byr,
+    "iyr": check_iyr,
+    "eyr": check_eyr,
+    "hgt": check_hgt,
+    "hcl": check_hcl,
+    "ecl": check_ecl,
+    "pid": check_pid,
+    "cid": check_cid
 }
 
 counter = 0

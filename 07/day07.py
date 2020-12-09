@@ -23,11 +23,11 @@ class Graph:
                     edgename.append({vrtx, nxtvrtx})
         return edgename
 
-    def addVertex(self, vrtx):
+    def add_vertex(self, vrtx):
         if vrtx not in self.gdict:
             self.gdict[vrtx] = []
 
-    def addEdge(self, edge):
+    def add_edge(self, edge):
         if edge[0] in self.gdict:
             self.gdict[edge[0]].append(edge[1])
         else:
@@ -45,17 +45,17 @@ for line in lines:
     for i in range(1, len(args)):
         if args[i][0:2] == 'no':
             continue
-        graph.addEdge([args[i][2:], (int(args[i][0]), args[0])])
+        graph.add_edge([args[i][2:], (int(args[i][0]), args[0])])
 
-def getAllParents(G, color, cSet):
+def get_all_parents(G, color, cSet):
     cSet.add(color)
     if G.vertice(color) != None:
         for parent in G.vertice(color):
-            pSet = getAllParents(G, parent[1], cSet)
+            pSet = get_all_parents(G, parent[1], cSet)
             cSet = cSet.union(pSet)
     return cSet
 
-print(len(getAllParents(graph, 'shiny gold', set()))-1)
+print(len(get_all_parents(graph, 'shiny gold', set()))-1)
 
 # Part 2:
 graph = Graph()
@@ -65,13 +65,13 @@ for line in lines:
     for i in range(1, len(args)):
         if args[i][0:2] == 'no':
             continue
-        graph.addEdge([args[0], (int(args[i][0]), args[i][2:])])
+        graph.add_edge([args[0], (int(args[i][0]), args[i][2:])])
 
-def countAllChildren(G, color, s):
+def count_all_children(G, color, s):
     if G.vertice(color) != None:
         # G.visit(color)
         for child in G.vertice(color):
-            s += child[0] * countAllChildren(G, child[1], 1)
+            s += child[0] * count_all_children(G, child[1], 1)
     return s
 
-print(countAllChildren(graph, 'shiny gold', 1)-1)
+print(count_all_children(graph, 'shiny gold', 1)-1)
